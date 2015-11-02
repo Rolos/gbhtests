@@ -25,12 +25,24 @@ class Recipe{
 		//get all the keys in the array
 		$keys = array_keys(static::$ingredients);		
 
+		$i = 0;
 		//find the larger element that holds the nuber
-		// foreach ($keys as $key) {
-		// 	if($x > $key)
-		// }
-		// self::$found[] = $keys[$i];
+		while($x < $keys[$i]) $i++;		
 
-		return static::$ingredients[1];
+		while($x > 0 && $i > 0){
+			self::$found[] = $keys[$i];
+			$x -= $keys[$i];
+			$i--;
+		}		
+
+		return static::getIngredientList();
+	}
+
+	public static function getIngredientList(){
+		$out = "¡Tenemos una receta de ";
+		foreach(self::$found as $one){
+			$out .= static::$ingredients[$one];
+		}
+		return $out;
 	}
 }
