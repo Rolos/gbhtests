@@ -19,6 +19,9 @@ class Recipe{
 
 	public static function findRecipe($x){
 
+		//restart found(i know it is not elegant!)
+		self::$found = [];
+
 		//error condition
 		if($x > 256 || $x < 0) throw new Exception("Variable out of range");
 
@@ -28,7 +31,6 @@ class Recipe{
 		$i = 0;
 		//find the larger element that holds the nuber
 		while($x > $keys[$i]) $i++;		
-
 		while($x > 0 && $i > 0){			
 			$i--;
 			self::$found[] = $keys[$i];
