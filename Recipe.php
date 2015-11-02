@@ -29,8 +29,8 @@ class Recipe{
 		//find the larger element that holds the nuber
 		while($x > $keys[$i]) $i++;		
 
-		while($x > 0 && $i > 0){
-			self::$found[] = $keys[$i];
+		while($x > 0 && $i > 0){			
+			self::$found[] = $keys[$i] - $keys[$i]/2;
 			$x -= $keys[$i];
 			$i--;
 		}		
@@ -43,6 +43,7 @@ class Recipe{
 		foreach(self::$found as $one){
 			$out .= static::$ingredients[$one] . ', ';
 		}
+		$out .= '<br>';
 		return $out;
 	}
 }
