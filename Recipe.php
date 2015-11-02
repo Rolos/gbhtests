@@ -30,9 +30,9 @@ class Recipe{
 		while($x > $keys[$i]) $i++;		
 
 		while($x > 0 && $i > 0){			
-			self::$found[] = $keys[$i] - $keys[$i]/2;
-			$x -= $keys[$i];
 			$i--;
+			self::$found[] = $keys[$i];
+			$x -= $keys[$i];			
 		}		
 
 		return static::getIngredientList();
