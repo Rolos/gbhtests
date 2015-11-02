@@ -27,7 +27,7 @@ class Recipe{
 
 		$i = 0;
 		//find the larger element that holds the nuber
-		while($x < $keys[$i]) $i++;		
+		while($x > $keys[$i]) $i++;		
 
 		while($x > 0 && $i > 0){
 			self::$found[] = $keys[$i];
@@ -41,7 +41,7 @@ class Recipe{
 	public static function getIngredientList(){
 		$out = "¡Tenemos una receta de ";
 		foreach(self::$found as $one){
-			$out .= static::$ingredients[$one];
+			$out .= static::$ingredients[$one] . ', ';
 		}
 		return $out;
 	}
