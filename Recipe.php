@@ -15,34 +15,37 @@ class Recipe{
 	];
 
 	//this array holds all the found keys
-	private static $found = [];
+	private $found = [];
 
-	public static function findRecipe($x){
+	private $r_number;
 
-		//restart found(i know it is not elegant!)
-		self::$found = [];
+	public function __construct($number){
+		$this->r_number = $number;
+	}
+
+	public function out(){
 
 		//error condition
-		if($x > 256 || $x < 0) throw new Exception("Variable out of range");
+		if($this->r_number > 256 || $this->r_number < 0) throw new Exception("Variable out of range");
 
 		//get all the keys in the array
 		$keys = array_keys(static::$ingredients);		
 
 		$i = 0;
 		//find the larger element that holds the nuber
-		while($x > $keys[$i]) $i++;		
-		while($x > 0 && $i > 0){			
+		while($this->r_number > $keys[$i]) $i++;		
+		while($this->r_number > 0 && $i > 0){			
 			$i--;
-			self::$found[] = $keys[$i];
-			$x -= $keys[$i];			
+			$this->found[] = $keys[$i];
+			$this->r_number -= $keys[$i];			
 		}		
 
-		return static::getIngredientList();
+		return $this->getIngredientList();
 	}
 
-	public static function getIngredientList(){
+	public function getIngredientList(){
 		$out = "¡Tenemos una receta de ";
-		foreach(self::$found as $one){
+		foreach($this->found as $one){
 			$out .= static::$ingredients[$one] . ', ';
 		}
 		$out .= '<br>';
