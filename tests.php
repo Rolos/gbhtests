@@ -36,6 +36,7 @@ echo FindRepeated::find($array2) . '<br>';
 echo "<br>---------------FIND THE RECIPE-------------------<br>";
 
 echo Recipe::findRecipe(12);
+echo Recipe::findRecipe(7);
 
 /**
  * Design Patterns
